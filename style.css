@@ -1,0 +1,152 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #eceff3;
+}
+
+/* Profile Card Container */
+.profile-card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* Enables 3D flip */
+    outline: none; /* remove blue outline for tabindex */
+}
+
+/* Inner Wrapper */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Flip on hover/focus */
+.profile-card:hover .card-inner,
+.profile-card:focus .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Card Sides */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    backface-visibility: hidden; /* hides the back when facing front */
+    overflow: hidden;
+}
+
+/* Front Side */
+.card-front {
+    background: #fff;
+    text-align: center;
+}
+
+.card-header {
+    background: #3c7ea1;
+    padding: 2rem 0 1rem;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+}
+
+.card-body .name {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.card-body .role {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.card-body .bio {
+    font-size: 0.9rem;
+    color: #333;
+    padding: 0 1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.btn {
+    text-decoration: none;
+    background: #0c0d6f;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 24px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus {
+    background: #48b9c8;
+}
+
+/* Back Side */
+.card-back {
+    background: linear-gradient(135deg, #63c1ff, #324c66);
+    color: #fff;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card-back h2 {
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    list-style: none;
+}
+
+.social-links li {
+    margin: 0.5rem 0;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .profile-card {
+        width: 90%;
+        height: 350px;
+    }
+    .card-body .bio {
+        font-size: 0.85rem;
+    }
+}
